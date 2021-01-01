@@ -1,0 +1,777 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>USANDO BibTeX</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+#subfigure
+{
+            width: 100%;
+}
+
+
+#fig1
+{
+            float: left;
+            width: 50%;
+}
+
+#fig2
+{           
+		float: right;
+           width: 50%;
+}
+
+span.red {
+  background: red;
+   border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-right: 15px;
+  text-align: center;
+  width: 1.6em;
+-webkit-box-shadow: 5px 5px 3px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    5px 5px 3px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         5px 5px 3px 0px rgba(50, 50, 50, 0.75);
+}
+
+tecla{
+padding: 0.1em 0.6em;
+border: 1px solid #CCC;
+font-family: Arial,Helvetica,sans-serif;
+background-color: #F7F7F7;
+color: #333;
+box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 2px #FFF inset;
+border-radius: 3px;
+display: inline-block;
+margin: 0px 0.1em;
+text-shadow: 0px 1px 0px #FFF;
+line-height: 1.4;
+white-space: nowrap;
+font-size: 12px;
+cursor: pointer;
+}
+tecla:hover{
+background-color: transparent;
+cursor: pointer;
+}
+
+#header {
+      padding-bottom: 32px;
+    }
+
+#header h1 {
+      text-align: center;
+      white-space: pre-wrap;
+      width: 90%;
+      margin: 81px auto 48px auto;
+    }
+
+.fecha {
+      font-style: italic;
+      text-align: center;
+      color: #7a7a7a;
+    }
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><header id="header">
+<h1>USANDO BibTeX PARA LA BIBLIOGRAFÍA CON LATEX</h1>
+</header><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1298"><a class="md-toc-inner" href="#1-propósito">1. Propósito</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1301"><a class="md-toc-inner" href="#11-preparando-la-base-de-datos">1.1 Preparando la base de datos</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1316"><a class="md-toc-inner" href="#12-descargando-información-bibliográfica-en-google-scholar">1.2. Descargando información bibliográfica en Google Scholar</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1338"><a class="md-toc-inner" href="#13-un-primer-archivo-∗bib">1.3. Un primer archivo <em>∗</em>.bib</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1345"><a class="md-toc-inner" href="#2-manejo-de-la-base-de-datos-con-jabref">2. Manejo de la base de datos con Jabref</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1347"><a class="md-toc-inner" href="#21-link-para-descargar-jabref---versión-52">2.1. Link para descargar Jabref - Versión 5.2</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1351"><a class="md-toc-inner" href="#22-inserción-de-nuevos-registros">2.2. Inserción de nuevos registros</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1390"><a class="md-toc-inner" href="#3-bibliografía-estilo-harvard">3. Bibliografía estilo Harvard</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1393"><a class="md-toc-inner" href="#31-archivos-∗sty-∗bst">3.1. Archivos <em>∗</em>.sty, <em>∗</em>.bst</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1405"><a class="md-toc-inner" href="#32-modificar-harvardand-por-y-en-el-archivo-agsmbst">3.2. Modificar harvardand por y en el archivo agsm.bst</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1416"><a class="md-toc-inner" href="#33-generar-archivo-∗bbl">3.3. Generar archivo <em>∗</em>.bbl</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1433"><a class="md-toc-inner" href="#4-incluir-referencia-de-página-web">4. Incluir referencia de página web</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1439"><a class="md-toc-inner" href="#5-campos-obligatorios-para-las-referencias">5. Campos obligatorios para las referencias</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1443"><a class="md-toc-inner" href="#6-insertar-referencia-bibliográfica-desde-jabref">6. Insertar referencia bibliográfica desde Jabref</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1457"><a class="md-toc-inner" href="#referencias-bibliográficas">Referencias Bibliográficas</a></span></p></div><h2><a name="1-propósito" class="md-header-anchor"></a><span>1. Propósito</span></h2><p><span>Ofrecer una buena opción para el manejo de la bibliografía de un documento elaborado con LATEX.</span></p><p><span>BibTeX es un programa auxiliar de LATEX, diseñado para facilitar el manejo de la bibliografía. Pero es más que eso: es también una herramienta que permite a LATEX extraer datos de una base de datos e insertarlos adecuadamente formateados en un documento (Ataz López 2006).</span></p><h3><a name="11-preparando-la-base-de-datos" class="md-header-anchor"></a><span>1.1 Preparando la base de datos</span></h3><p><span>La bibliografía puede organizarse en un archivo (fichero), que se conoce como </span><strong><span>base de datos</span></strong><span>, que puede ser creado desde el mismo programa TeXstudio. Es conveniente guardar esta base de datos en la carpeta que ya contiene el archivo del trabajo que se está elaborando.</span></p><p><span>La información bibliográfica de un texto, un artículo, una página web, entre otros, constituye un registro y este a su vez está formado por campos. Los campos contienen información básica (obligatoria) y otra opcional (Ataz López 2006, pág. 14).</span></p><p><span>Veamos el &quot;aspecto&quot; de dos registros, libro y artículo, los cuales en la línea 1 muestran su naturaleza enseguida del símbolo arroba </span><code>@</code><span>:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="assembly"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="assembly"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">@book{``espacio para el bibtexkey'',</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">title</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">author</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">4</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">publisher</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">5</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">year</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">6</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">isbn</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">7</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">series</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">8</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">edition</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">9</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">volume</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">10</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">url</span> <span class="cm-tag">=</span> ``opcional''</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">11</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-braket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 253px;"></div><div class="CodeMirror-gutters" style="display: none; height: 253px;"></div></div></div></pre><p>&nbsp;</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="assembly"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="assembly"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">@article{``espacio para el bibtexkey'',</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">title</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">author</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">4</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">publisher</span> <span class="cm-tag">=</span> ``NO'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">5</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">journal</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">6</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">year</span> <span class="cm-tag">=</span> ``obligatorio'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">7</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">issn</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">8</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">doi</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">9</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">volume</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">10</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">issue</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">11</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">pages</span> <span class="cm-tag">=</span> ``opcional'',</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">12</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">url</span> <span class="cm-tag">=</span> ``opcional''</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">13</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-braket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 299px;"></div></div></div></pre><p>&nbsp;</p><blockquote><p><strong><span>Nota 1: </span></strong></p><p><span>El &quot;</span><code>bibtexkey</code><span>&quot; mencionado en la línea 1 se requiere para poder referenciar los registros (textos, artículos, </span><em><span>. . .</span></em><span>) con el uso de la instrucción </span><em><span>\</span></em><span>cite{}.</span></p></blockquote><p><span>Así que, estando en la consola de TeXstudio se crea un nuevo documento pulsando </span><tecla><strong><span>Ctrl</span></strong></tecla><span> + </span><tecla><strong><span>N</span></strong></tecla><span> y lo grabamos por ejemplo con con el nombre: </span><strong><span>textos_articulo.bib</span></strong><span>. Observe la extensión, la cual es la que reconoce el programa para procesar y generar la bibliografía con el estilo que deseemos.</span></p><div id="subfigure">
+	<a name="fig:1"></a>
+	<div id="fig1">
+	<a name="fig:1a"></a>
+	<img src="imagenes/1_A_nombre_archivo_bib.png" style="zoom:100%"> 
+    <div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div id="fig2">
+	<a name="fig:1b"></a>
+	<img src="imagenes/1_Archivo_bib.png" style="zoom:100%">
+<div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div style=" text-align:center;font-style: italic;"><p> <b>Figura 1:</b> Preparando base de datos: textos_articulo.bib</p></div>
+</div><p>&nbsp;</p><p><span>y se deja abierta esta base de datos para ir &quot;pegando&quot; los registros que se vayan necesitando.</span></p><h3><a name="12-descargando-información-bibliográfica-en-google-scholar" class="md-header-anchor"></a><span>1.2. Descargando información bibliográfica en Google Scholar</span></h3><p><span>En este archivo </span><code>*.bib</code><span> podemos ir recolectando información que luego será procesada.</span></p><div id="subfigure">
+	<a name="fig:1"></a>
+	<div id="fig1">
+	<a name="fig:1a"></a>
+	<img src="imagenes/2_A_google_academico.png" style="zoom:100%"> 
+    <div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div id="fig2">
+	<a name="fig:1b"></a>
+	<img src="imagenes/2_B_elegir_comillas.png" style="zoom:100%">
+<div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div style=" text-align:center;font-style: italic;"><p> <b>Figura 2:</b> Consultando en Google Académico</p></div>
+</div><p><span>En Google Académico </span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup><span> hay información bibliográfica de una buena cantidad de textos y artículos. En la imagen anterior se ha insertado el título de un libro: </span><em><span>Chaos in Real Data: The Analysis of Non-Linear Dynamics from Short Ecological Time Series</span></em><span> y, como se puede observar en la imagen anterior existe la información que necesitamos. Justamente se accede mediante las</span></p><p><span>&quot;comillas&quot; a una nueva página, en la cual eligiendo la opción Bibtex, se llega finalmente a la descripción bibliográfica necesaria:</span></p><figure><table><thead><tr><th style='text-align:center;' ><img src="imagenes/2_C_bibtex.png" referrerpolicy="no-referrer" alt="bibtex"></th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>Figura 3:</span></strong><span> </span><em><span>Información del registro</span></em></td></tr></tbody></table></figure><p><span>Así que para el primer libro que ingresamos en Google Scholar, el registro es el siguiente, con los campos obligatorios:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="assembly"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="assembly"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">@book{perry2012chaos,</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">title</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Chaos in real <span class="cm-tag">data:</span> the analysis of non-linear dynamics from short <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>ecological time series<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">author</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Perry, Joe N and Smith, Robert H and Woiwod, Ian P and Morse, David R<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">4</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">volume</span><span class="cm-tag">=</span><span class="cm-braket">{</span>27<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">5</span><span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span> <span class="cm-keyword">year</span><span class="cm-tag">=</span><span class="cm-braket">{</span>2012<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">6</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">publisher</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Springer Science \&amp; Business Media<span class="cm-braket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">7</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-braket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>Si ahora se hace la búsqueda para el artículo con título: </span><em><span>Determining the degree of chaos from analysis of ISI time series in the nervous system: a comparison between correlation dimension and nonlinear forecasting methods</span></em><span> se obtiene el registro, que contiene los campos obligatorios, pero se anula el de </span><em><span>publisher</span></em><span> (sólo corresponde a libros):</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="assembly"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="assembly"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">@article{yunfan1998determining,</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">title</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Determining the degree of chaos from analysis of ISI time series in the <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>nervous <span class="cm-tag">system:</span> a comparison between correlation dimension and nonlinear <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>forecasting methods<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">author</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Yunfan, Gong and Jianxue, Xu and Wei, Ren and Sanjue, Hu and Fuzhou, <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>Wang<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">4</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">journal</span><span class="cm-tag">=</span><span class="cm-braket">{</span>Biological Cybernetics<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">5</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">volume</span><span class="cm-tag">=</span><span class="cm-braket">{</span>78<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">6</span><span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">number</span><span class="cm-tag">=</span><span class="cm-braket">{</span>2<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">7</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">pages</span><span class="cm-tag">=</span><span class="cm-braket">{</span>159--165<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">8</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">year</span><span class="cm-tag">=</span><span class="cm-braket">{</span>1998<span class="cm-braket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">9</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">publisher</span><span class="cm-tag">=</span><span class="cm-braket">{}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">10</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-braket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 322px;"></div><div class="CodeMirror-gutters" style="display: none; height: 322px;"></div></div></div></pre><p><span>Más adelante, en la Sección </span><a href='#campos-obligatorios-para-las-referencias'><span>5</span></a><span> se brindará información acerca de los campos que deben contener otros tipos de registros.</span></p><p><span>En cuanto al estilo de la bibliografía hay variedad de acuerdo con el área del conocimiento:</span></p><p><strong><span>Plantillas APA:</span></strong><span> Psicología, Educación, Ciencias Económicas, Artes, Humanas y Sociales;</span></p><p><strong><span>Plantillas IEEE:</span></strong><span> Ingenierías;</span></p><p><strong><span>Plantillas Vancouver:</span></strong><span> Ciencias de la Salud. </span></p><p><span>Algunas páginas para observar estilos son:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.reed.edu/cis/help/LaTeX/bibtexstyles.html</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.bibtex.com/s/bibliography−style−misc−amsplain/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.bibtex.com/s/bibliography−style−economic−cje/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.bibtex.com/s/bibliography−style−gatech−thesis−gatech−thesis/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.bibtex.com/s/bibliography−style−din1505−abbrvdin/</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><h3><a name="13-un-primer-archivo-∗bib" class="md-header-anchor"></a><span>1.3. Un primer archivo </span><em><span>∗</span></em><span>.bib</span></h3><p><span>Veamos cómo luce el archivo </span><strong><span>textos_articulo.bib</span></strong><span> que se había sugerido crear, con la información lograda a través de Google Académico, una vez se pegaron (y grabado) los datos del libro y del artículo anteriores:</span></p><figure><table><thead><tr><th style='text-align:center;' ><img src="imagenes/screenshot002.png" referrerpolicy="no-referrer" alt="bibtex"></th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>Figura 4:</span></strong><span> </span><em><span>Base de datos </span><strong><span>textos_articulo.bib</span></strong><span> con dos registros</span></em></td></tr></tbody></table></figure><h2><a name="2-manejo-de-la-base-de-datos-con-jabref" class="md-header-anchor"></a><span>2. Manejo de la base de datos con Jabref</span></h2><p><span>JabRef es una gestor de referencias bibliográficas que genera archivos </span><code>.bib</code><span> utilizados por LATEX. Se trata de un programa de software libre disponible para los sistema operativos más usuales (GNU/Linux, MAC OS X y MS Windows) (Torres Ninahuanca 2014, pág. 3).</span></p><h3><a name="21-link-para-descargar-jabref---versión-52" class="md-header-anchor"></a><span>2.1. Link para descargar Jabref - Versión 5.2</span></h3><p><span>Se puede descargar en</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://www.fosshub.com/JabRef.html</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="22-inserción-de-nuevos-registros" class="md-header-anchor"></a><span>2.2. Inserción de nuevos registros</span></h3><p><span>A medida que se avanza en el archivo LATEX van surgiendo más fuentes bibliográficas para ser referenciadas y precisamente el programa Jabref se constituye en un buen aliado en esa tarea, permitiendo suprimir alguna(s) según la necesidad, a lo largo de la elaboración del trabajo.</span></p><p><span>Al abrir el programa Jabref, en la parte superior vemos</span></p><p><img src="imagenes\4_jabref.png" referrerpolicy="no-referrer"></p><p><span>Para construir un archivo (base de datos), en File se despliegan opciones, y allí se elige</span></p><p><strong><span>New library</span></strong></p><p><span>	</span><strong><span>New BibTeX library</span></strong></p><p><span>como se aprecia en la imagen y enseguida se procede a asignarle un nombre</span></p><p>&nbsp;</p><div id="subfigure">
+	<a name="fig:1"></a>
+	<div id="fig1">
+	<a name="fig:1a"></a>
+	<img src="imagenes/5_new_library.png" style="zoom:100%"> 
+    </div>
+	<div id="fig2">
+	<a name="fig:1b"></a>
+	<img src="imagenes/6_asignar_nombre.png" style="zoom:100%">
+	</div>
+</div><p>&nbsp;</p><p><span>teniendo precaución de agregarle la extensión. Por ejemplo se puede crear</span></p><p>&nbsp;</p><p><img src="imagenes/7_grabar_como.png" referrerpolicy="no-referrer"></p><p><span>Ahora, vamos a insertar un primer texto. Elegimos un libro sobre LATEX de Mora W., Borbón.</span></p><p><span>Vamos a buscarlo en Google scholar (académico), como se hizo en la sección </span><a href='#descargando-información-bibliográfica-en-google-scholar'><span>1.2</span></a><span>:</span></p><p><img src="imagenes/9_nombre_texto.png" referrerpolicy="no-referrer"></p><p><span>hasta obtener el registro</span></p><p><img src="imagenes/12_codigo_texto.png" referrerpolicy="no-referrer"></p><p><span>Entonces, la información bibliográfica se copia en Jabref. Primero se indica que se va a incluir una nueva referencia, pulsando el &quot;botón&quot; con el símbolo </span><code>+</code><span> como se ve en la imagen de la izquierda y luego, en el panel de la parte inferior rotulado con </span><em><span>{}BibTeX source</span></em><span> se pega el código anterior:</span></p><div id="subfigure">
+	<a name="fig:1"></a>
+	<div id="fig1">
+	<a name="fig:1a"></a>
+	<img src="imagenes/13_adicionar.png" style="zoom:100%"> 
+    <div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div id="fig2">
+	<a name="fig:1b"></a>
+	<img src="imagenes/14_fuente.png" style="zoom:100%">
+<div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div style=" text-align:center;font-style: italic;"></div>
+</div><p>&nbsp;</p><p><span>La información anterior queda distribuida en los otros paneles, entonces si abrimos los dos primeros encontramos</span></p><div id="subfigure">
+	<a name="fig:1"></a>
+	<div id="fig1">
+	<a name="fig:1a"></a>
+	<img src="imagenes/14a_panel_1.png" style="zoom:100%"> 
+    <div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div id="fig2">
+	<a name="fig:1b"></a>
+	<img src="imagenes/14b_panel_2.png" style="zoom:100%">
+<div style=" text-align:center;font-style: italic;"></div>
+	</div>
+	<div style=" text-align:center;font-style: italic;"></div>
+</div><p>&nbsp;</p><p><span>No siempre la información existente en Google Académico es precisa. Por ejemplo en el caso elegido, está como </span><em><span>Miscelanea</span></em><span>, y sabemos que la referencia corresponde al tipo </span><em><span>Book</span></em><span> por lo que es necesario hacer algunas modificaciones:</span></p><ul><li><span>Cambiar </span><em><span>Miscelanea</span></em><span> por </span><em><span>Book</span></em><span>: La imagen siguiente muestra que sobre Miscelanea al hacer presión, aparecen dos líneas, la primera de ellas con leyenda </span><em><span>BibTeX</span></em><span> permite desplegar varios tipos de bibliografía, y en este caso se elige </span><em><span>Book</span></em><span>.</span></li></ul><p><img src="imagenes/15_cambiar_tipo.png" referrerpolicy="no-referrer"></p><ul><li><span>En la primera pestaña, con rótulo </span><em><span>Required fields</span></em><span>, aparecen espacios llamados campos. En unos cuantos de ellos se lee información del texto elegido: </span><code>Author</code><span>, </span><code>Bibtexkey</code><span>, </span><code>Editor</code><span>, </span><code>Publisher</code><span>, </span><code>Title</code><span>, </span><code>year</code><span>. Como se comentó en la Subsección </span><a href='#descargando-información-bibliográfica-en-google-scholar'><span>1.2</span></a><span>, más adelante en la Sección </span><a href='#campos-obligatorios-para-las-referencias'><span>5</span></a><span> se encontrará información acerca de los campos según el tipo de referencia.</span></li></ul><p><img src="imagenes/16_pestana_1.png" referrerpolicy="no-referrer"></p><p><span>Hay advertencias del programa Jabref, destacadas como pequeños triángulos amarillos. En la línea </span><code>Author</code><span> aparece una letra mayúscula sola; es necesario que enseguida se coloque un punto. Además es importante escribir primero los apellidos seguidos de una coma y luego los nombres. El triángulo de advertencia en la línea </span><code>Title</code><span> se refiere a que existe mayúsculas no encerradas en llaves, de tal manera que al elaborar el pdf saldrían en minúsculas (posiblemente). Una opción sencilla es encerrar en llaves todo el título. Veamos el resultado de estos cambios:</span></p><p><img src="imagenes/17_cambios_pestana_1.png" referrerpolicy="no-referrer"></p><p><span>Ya no hay triángulos de advertencia.</span></p><blockquote><p><strong><span>Nota 2</span></strong>
+<span>En Jabref es necesario para las tildes y la ñ usar código de máquina.</span>
+<span>En esta referencia que contiene dos autores los nombres de ellos se separan con la palabra </span><em><span>and</span></em><span>. Esto mismo se hace para un número mayor de autores.</span></p></blockquote><h2><a name="3-bibliografía-estilo-harvard" class="md-header-anchor"></a><span>3. Bibliografía estilo Harvard</span></h2><p><span>El estilo Harvard de citas, sistema de autor-año o sistema de autor-fecha (entre otros nombres) es un estilo de cita que utiliza una forma abreviada de la referencia bibliográfica a la fuente de la cita (los apellidos de los autores, el año de edición y opcionalmente las páginas citadas) inmediatamente después del material citado dentro del texto; las referencias completas se encuentran ordenadas alfabéticamente en una sección aparte, generalmente llamada bibliografía</span><sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup><span>.</span></p><h3><a name="31-archivos-∗sty-∗bst" class="md-header-anchor"></a><span>3.1. Archivos </span><em><span>∗</span></em><span>.sty, </span><em><span>∗</span></em><span>.bst</span></h3><p><span>BibTeX opera con tres archivos. Un archivo Auxiliar ( </span><code>*.aux</code><span>), producido cuando LATEX se ejecuta; un archivo BST ( </span><code>*.bst</code><span>) de estilo, que especifica el formato a usar para mostrar la bibliografía y un archivo de Bases de Datos (ya mencionado) que almacena su bibliografía</span><sup class='md-footnote'><a href='#dfref-footnote-3' name='ref-footnote-3'>3</a></sup><span>.</span></p><p><span>El estilo Harvard es empleado principalmente en física, ciencias naturales y ciencias sociales. Si se desea que al elaborar un LATEX la bibliografía tenga el estilo Harvard, se requiere que la carpeta del trabajo contenga los dos archivos siguientes:</span></p><p><img src="imagenes/1_estilo_harvard.png" referrerpolicy="no-referrer"></p><p><span>Estos archivos se encuentran en la página de la Organización </span><strong><span>Ctan</span></strong><span> cuyo link es</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://ctan.org/pkg/harvard</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>De allí se descarga la carpeta</span></p><p><img src="imagenes/3_harvard_zip.png" referrerpolicy="no-referrer"></p><p><span>que los contiene.</span></p><p><span>Además el preámbulo del documento debe contener el paquete harvard, es decir, debe aparecer </span><code>\usepackage{harvard}</code><span>. Un posible preámbulo puede ser:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\documentclass</span><span class="cm-bracket">[</span><span class="cm-atom">11pt</span>,letterpaper<span class="cm-bracket">]{</span><span class="cm-atom">article</span><span class="cm-bracket">}</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">utf8</span><span class="cm-bracket">]{</span>inputenc<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">spanish</span><span class="cm-bracket">]{</span>babel<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amsmath</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amsfonts</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amssymb</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">graphicx</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">left=3.00cm, right=3.00cm, top=2.50cm, bottom=2.50cm</span><span class="cm-bracket">]{</span>geometry<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">harvard</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\begin</span><span class="cm-bracket">{</span><span class="cm-atom">document</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>cuerpo del documento</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\end</span><span class="cm-bracket">{</span><span class="cm-atom">document</span><span class="cm-bracket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 345px;"></div><div class="CodeMirror-gutters" style="display: none; height: 345px;"></div></div></div></pre><h3><a name="32-modificar-harvardand-por-y-en-el-archivo-agsmbst" class="md-header-anchor"></a><span>3.2. Modificar harvardand por y en el archivo agsm.bst</span></h3><p><span>Los archivos </span><code>.bst</code><span> están configurados para el idioma inglés, de tal manera que cuando una referencia tiene varios autores, el último de ellos es agregado con la palabra </span><em><span>and</span></em><span>. De tal manera que se desea, para un trabajo en español, que aparezca la conjunción </span><em><span>y</span></em><span> a cambio de </span><em><span>and</span></em><span> o de pronto del signo comercial &amp;.</span></p><p><span>En la página oficial </span><em><span>Ctan.org</span></em><span> con el link</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>https://www.ctan.org/tex−archive/macros/latex/contrib/harvard/</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>se encuentra el archivo </span><code>agsm.bst</code><span>, al descargarlo (con Google Chrome) abre el contenido por lo que con el botón secundario del mouse se elige </span><em><span>Guardar como</span></em><span> y comienza la descarga. Luego se modifica para que tenga extensión </span><code>.bst</code><span>, para ello se abre con TeXstudio y se busca:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>format.names</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>Veamos parte del contenido:</span></p><p><img src="imagenes/32_Modificar_harvardand.png" referrerpolicy="no-referrer"></p><p><span>En el link</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>https://ctan.org/tex−archive/biblio/bibtex/base</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>se pueden encontrar otros archivos </span><code>∗.bst</code><span>.</span></p><h3><a name="33-generar-archivo-∗bbl" class="md-header-anchor"></a><span>3.3. Generar archivo </span><em><span>∗</span></em><span>.bbl</span></h3><p><span>&quot;El formato de archivo </span><code>.bib</code><span> se utiliza para describir referencias bibliográficas. Cuando se usa junto con LATEX y BibTeX, genera un archivo con la extensión </span><code>.bbl</code><span>, que en realidad es solo un archivo tex con una extensión diferente que contiene sus referencias formateadas de acuerdo con el estilo de bibliografía elegido en su archivo </span><code>.tex</code><span> a través de </span><code>\bibligraphystyle {}</code><span> ´´</span><sup class='md-footnote'><a href='#dfref-footnote-4' name='ref-footnote-4'>4</a></sup><span>.</span></p><p><span>Una vez se tenga la base de datos a la cual, como se señaló antes, posteriormente se le pueden adicionar o suprimir otras referencias, se pasa a preparar el archivo para el documento. Un preámbulo puede ser como el que se muestra y, en el cuerpo del documento se incluyen tres líneas relacionadas con la construcción de las referencias bibliográficas. Estas son</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\nocite</span><span class="cm-bracket">{</span>*<span class="cm-bracket">}</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\bibliographystyle</span><span class="cm-bracket">{</span>agsm<span class="cm-bracket">}</span><span class="cm-comment">% Para el estilo harvard</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\bibliography</span><span class="cm-bracket">{</span>guia_jabref<span class="cm-bracket">}</span><span class="cm-comment">% Base de datos</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p><span>que aparecen en las líneas 12, 16 y 17:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">1</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\documentclass</span><span class="cm-bracket">[</span><span class="cm-atom">11pt</span>,letterpaper<span class="cm-bracket">]{</span><span class="cm-atom">article</span><span class="cm-bracket">}</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">2</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">utf8</span><span class="cm-bracket">]{</span>inputenc<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">3</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">spanish</span><span class="cm-bracket">]{</span>babel<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">4</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amsmath</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">5</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amsfonts</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">6</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">amssymb</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">7</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">graphicx</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">8</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">[</span><span class="cm-atom">left=3.00cm, right=3.00cm, top=2.50cm, bottom=2.50cm</span><span class="cm-bracket">]{</span>geometry<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">9</span> <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">harvard</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">10</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tag">\usepackage</span><span class="cm-bracket">{</span><span class="cm-atom">url</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">11</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tag">\begin</span><span class="cm-bracket">{</span><span class="cm-atom">document</span><span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">12</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\nocite</span><span class="cm-bracket">{</span>*<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">13</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">14</span> <span class="cm-tab" role="presentation" cm-text="	"> </span>cuerpo del documento</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">15</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">16</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\bibliographystyle</span><span class="cm-bracket">{</span>agsm<span class="cm-bracket">}</span><span class="cm-comment">% Para el estilo harvard</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">17</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">\bibliography</span><span class="cm-bracket">{</span>guia_jabref<span class="cm-bracket">}</span><span class="cm-comment">% Base de datos</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-atom">18</span> <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tag">\end</span><span class="cm-bracket">{</span><span class="cm-atom">document</span><span class="cm-bracket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 437px;"></div><div class="CodeMirror-gutters" style="display: none; height: 437px;"></div></div></div></pre><blockquote><p><strong><span>Nota 3</span></strong>
+<span>La instrucción </span><code>\nocite{∗}</code><span> &quot;obliga&quot; a que aparezcan todas las referencias que hay en la base de datos. Las dos últimas instrucciones se pueden tomar de:</span></p></blockquote><p><img src="imagenes/28_bibliograf.png" referrerpolicy="no-referrer"></p><p><span>El archivo de extensión </span><code>.bbl</code><span> que se generará contiene las referencias con el archivo de estilo elegido. Entonces, se compila con </span><tecla><strong><span>F6</span></strong></tecla><span> (compilación PdfLaTeX), luego con </span><tecla><strong><span>F8</span></strong></tecla><span> se procesa la bibliografía contenida en la base de datos. Veamos hasta aquí lo que se exhibe en el computador:</span></p><p><img src="imagenes/29_aplicar_F8.png" referrerpolicy="no-referrer"></p><p><span>Se ha resaltado que hay una advertencia sobre la referencia de Mora &amp; Borbón. Con precisión señala que el campo </span><em><span>Publisher</span></em><span> está vacío. Este campo se refiere a la Editorial que publica el libro. Así que si revisamos y arreglamos ese dato</span></p><p><img src="imagenes/30_publisher.png" referrerpolicy="no-referrer"></p><p><span>Una vez ha ejecutado </span><tecla><strong><span>F8</span></strong></tecla><span> y leido los comentarios, vuelve a compilar con </span><tecla><strong><span>F6</span></strong></tecla><span> y visualiza el documento en pdf con </span><tecla><strong><span>F7</span></strong></tecla><span>.</span></p><blockquote><p><strong><span>Nota 4</span></strong>
+<span>Cada vez que adicione una nueva entrada en Jabref, debe grabar, por</span>
+<span>ejemplo usando teclas </span><tecla><span>Ctrl</span></tecla><span> + </span><tecla><span>S</span></tecla><span> . Luego al compilar, posiblemente las referencias se actualicen sin necesidad de usar </span><tecla><strong><span>F8</span></strong></tecla><span>, sin embargo conviene hacerlo para </span><strong><span>leer alguna observación sobre algún campo faltante o incorrecto</span></strong><span>.</span></p></blockquote><h2><a name="4-incluir-referencia-de-página-web" class="md-header-anchor"></a><span>4. Incluir referencia de página web</span></h2><p><span>En el preámbulo debe agregarse el paquete </span><em><span>url</span></em><span>. Tomado de Gray (2008, pág. 3), vemos los campos que contiene este tipo de referencia:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="latex"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="latex"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>@Webpage<span class="cm-bracket">{</span>apastyle,</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>url = <span class="cm-bracket">{</span>http://www.apastyle.org/elecref.html<span class="cm-bracket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>author = <span class="cm-bracket">{{</span>American Psychological Association<span class="cm-bracket">}}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>title = <span class="cm-bracket">{</span>Electronic References<span class="cm-bracket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>year = 2001,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>lastchecked = <span class="cm-bracket">{</span><span class="cm-atom">23</span> October 2002<span class="cm-bracket">}</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>note = <span class="cm-bracket">{</span>Excerpted from 5th edition of the APA Publication Manual<span class="cm-bracket">}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-bracket">}</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>Y en la consola del programa Jabref se verá:</span></p><p><img src="imagenes/screenshot001.png" referrerpolicy="no-referrer"></p><p><span>Debe tener la precaución de anteponer el (</span><code>backslash</code><span>) a símbolos como ? y </span><span>_</span><span> (guión bajo) que aparezcan en cada dirección URL. Algunas direcciones URL son extensas, para lo cual se usa </span><code>\usepackage\[hyphens\]{url}</code><span> para que las &quot;parta&quot; adecuadamente ajustándolas al margen definido.</span></p><h2><a name="5-campos-obligatorios-para-las-referencias" class="md-header-anchor"></a><span>5. Campos obligatorios para las referencias</span></h2><p><span>Cada tipo de referencia o entrada tiene unos </span><strong><span>campos obligatorios</span></strong><span>, como se puede consultar en Ataz López (2006, pág. 14), algunos de los cuales se muestran a continuación</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="assembly" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="assembly"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Article</span> (artículo): Un artículo publicado en una revista.</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">obligatorios:</span> <span class="cm-keyword">author</span>, title, journal y year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">Opcionales:</span> volume, number, pages y month.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Book</span> (libro): Un libro normal.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">obligatorios:</span> <span class="cm-keyword">author</span> <span class="cm-keyword">o</span> <span class="cm-keyword">editor</span>, title, publisher y year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">Opcionales:</span> volume o number, series, address, edition y month.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Booklet</span> (folleto): Un trabajo impreso y distribuido pero sin que conste la editorial <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>o institución que lo patrocina.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campo</span> <span class="cm-tag">obligatorio:</span> <span class="cm-keyword">title</span>. </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">opcionales:</span> <span class="cm-keyword">author</span>, howpublished, address, month y year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Conference</span> (conferencia): Idéntico a InProceedings. Se incluye exclusivamente para <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>mantener la compatibilidad con el formato Scribe.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">InBook</span> (dentro de un libro): Una parte de un libro, que puede ser un capítulo (o <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>sección o similar) o un rango de páginas, o ambas cosas.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">obligatorios:</span> <span class="cm-keyword">author</span> <span class="cm-keyword">o</span> <span class="cm-keyword">editor</span>, title, chapter y/o pages, publisher y year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">Opcionales:</span> volume o number, series, type, address, edition y month.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">El</span> <span class="cm-keyword">campo</span> <span class="cm-keyword">title</span>, en estas referencias, se refiere al título del libro, no al título <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">    </span>del capítulo o grupo de páginas a que se refiere el registro.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">InCollection</span> (en una colección): Una parte de un libro que tiene su propio título.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">obligatorios:</span> <span class="cm-keyword">author</span>, title, booktitle, publisher y year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tag">Opcionales:</span> crossref, editor, volume o number, series, type, chapter, pages, <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>address, edition y month.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">InProceedings</span> (en las actas): Una conferencia, artículo o ponencia en las actas de un <span class="cm-tab" role="presentation" cm-text="	">  </span>congreso o, en general, en un libro que agrupe varios trabajos de autores distintos y <span class="cm-tab" role="presentation" cm-text="	">  </span>con títulos independientes.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">obligatorios:</span> <span class="cm-keyword">author</span>, title, booktitle, year.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">Campos</span> <span class="cm-tag">opcionales:</span> <span class="cm-keyword">crossref</span>, editor, volume o number, series, pages, address, <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>month, organization y publisher.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1058px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1058px;"></div></div></div></pre><p>&nbsp;</p><h2><a name="6-insertar-referencia-bibliográfica-desde-jabref" class="md-header-anchor"></a><span>6. Insertar referencia bibliográfica desde Jabref</span></h2><p><span>Se refiere a &quot;escribir&quot; la instrucción cite{bibid} eligiendo el correspondiente texto desde la base de datos en Jabref. La primera imágen muestra el cursor donde se desar insrtar la referencia:</span></p><p><img src="imagenes/22_antes_de_referenciar.png" referrerpolicy="no-referrer"></p><p><span>Ahora se muestra en Jabref la línea del texto elegido y el icono para conectarse con el archivo en Texstudio:</span></p><p><img src="imagenes/23_insertar_referencia.png" referrerpolicy="no-referrer"></p><blockquote><p><strong><span>Nota 5</span></strong>
+<span>Esta acción se puede realizar siempre y cuando la referencia bibliográfica tenga asignado un Bibtexkey.</span></p></blockquote><p><span>Es frecuente aprovechar el tipo de una referencia para generar una del mismo tipo. Por ejemplo, en la imagen anterior está resaltada la tercera y se puede usar la secuencia </span><tecla><strong><span>CTRL</span></strong></tecla><span> + </span><tecla><strong><span>C</span></strong></tecla><span>, </span><tecla><strong><span>CTRL</span></strong></tecla><span> + </span><tecla><strong><span>V</span></strong></tecla><span>. Veamos lo que sucede:</span></p><p><img src="imagenes/31_duplicar_entrada.png" referrerpolicy="no-referrer"></p><p><span>Entonces entra a la copia y procede a construir una nueva.</span></p><p><span>La imagen muestra la ubicación de este campo. En caso de estar vacío, basta &quot;tocar&quot; el &quot;botón&quot; Generate y el programa se encarga de asignar uno.</span></p><p><img src="imagenes/27_bibtexkey.png" referrerpolicy="no-referrer"></p><p><span>Volviendo al proceso de insertar referencia bibliográfica, luego de pulsar el &quot;botón&quot; TEX, aparece en Texstudio la instrucción cite{AtazLopez2006} pero la modificamos para incluír la página y </span><em><span>cite</span></em><span> se cambia por </span><em><span>citeasnoun</span></em><span> con el fin de llevar una redacción adecuada:</span></p><p><img src="imagenes/24_resultado_cite.png" referrerpolicy="no-referrer"></p><h2><a name="referencias-bibliográficas" class="md-header-anchor"></a><span>Referencias Bibliográficas</span></h2><p><span>Ataz López, J. (2006), &#39;Guía casi completa de BIBTEX</span><span>*</span><span>&#39;.</span>
+<strong><span>URL:</span></strong><span> </span><em><a href='https://scholar.google.es/scholar?q=Gu' target='_blank' class='url'>https://scholar.google.es/scholar?q=Gu</a><span>ía casi completa de BIB- TEX</span><span>*</span><span>&amp;hl=es&amp;as_sdt=0,5</span></em></p><p><span>Gray, N. (2008), &#39;The urlbst package&#39;.</span>
+<strong><span>URL:</span></strong><span> </span><em><a href='http://www.sys.kth.se/docs/texlive/texmf-dist/doc/latex/urlbst/urlbst.pdf'><span>https://www.sys.kth.se/docs/texlive/texmf-dist/doc/latex/urlbst/urlbst.p</span></a><span>df</span></em></p><p><span>Mora F., W. y Borbón A., A. (2017), </span><em><span>Edición de textos científicos con LATEX</span></em><span>, Revista digital Matemática Educación e Internet.</span></p><p><span>Torres Ninahuanca, C. (2014), &#39;Una breve introducción a JabRef&#39;.</span>
+<strong><span>URL:</span></strong><span> </span><em><a href='https://edumate.files.wordpress.com/2015/01/una-introduccic3b3n-breve-a-' target='_blank' class='url'>https://edumate.files.wordpress.com/2015/01/una-introduccic3b3n-breve-a-</a><span> jabref.pdf</span></em></p><p><span>Williams, P. y Schnier, T. (2008), &#39;The Harvard Family of Bibliography Styles&#39;.</span>
+<strong><span>URL:</span></strong><span> </span><a href='http://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/harvard/harvard.pdf'><em><a href='http://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/harvard/harvard.pdf' target='_blank' class='url'>http://mirrors.ucr.ac.cr/CTAN/macros/latex/contrib/harvard/harvard.pdf</a></em></a></p><figure><table><thead><tr><th style='text-align:center;' ><img src="imagenes/logo_GIE.png" referrerpolicy="no-referrer" alt="Grupo de Investigación"></th></tr></thead><tbody><tr><td style='text-align:center;' ><em><span>&quot;Copyright </span>&copy;<span> 2020 Grupo de Investigación en Estadística GIE&quot;</span></em></td></tr></tbody></table></figure><div class='footnotes-area'  ><hr/>
+<div class='footnote-line'><span class='md-fn-count'>1</span> <a href='https://scholar.google.es/schhp?hl=es' target='_blank' class='url'>https://scholar.google.es/schhp?hl=es</a> <a name='dfref-footnote-1' href='#ref-footnote-1' title='volver al documento' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>2</span> <a href='https://es.wikipedia.org/wiki/Estilo_Harvard_de_citas' target='_blank' class='url'>https://es.wikipedia.org/wiki/Estilo_Harvard_de_citas</a> <a name='dfref-footnote-2' href='#ref-footnote-2' title='volver al documento' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>3</span> <a href='http://sintesis.ugto.mx/WintemplaWeb/04TexLab/03Cross%20Reference/02BibTeX/index.htm' target='_blank' class='url'>http://sintesis.ugto.mx/WintemplaWeb/04TexLab/03Cross%20Reference/02BibTeX/index.htm</a> <a name='dfref-footnote-3' href='#ref-footnote-3' title='volver al documento' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>4</span> <a href='https://tex.stackexchange.com/questions/302916/difference-between-a-bib-and-bbl-file-for-latex' target='_blank' class='url'>https://tex.stackexchange.com/questions/302916/difference-between-a-bib-and-bbl-file-for-latex</a> <a name='dfref-footnote-4' href='#ref-footnote-4' title='volver al documento' class='reversefootnote' >↩</a></div></div></div>
+</body>
+</html>
